@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title>Valentine</title>
+        <link rel="stylesheet" href="./style.css">
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    </head>
+<body>
+    <div class="container">  
+        <div class="valentines">
+          <div class="envelope"></div>
+          <div class="front"></div>
+          <div class="card">
+          <div class="text">Happy</br> Valentine's</br> Day!</div>
+          <div class="heart"></div>
+          <div class="hearts">
+            <div class="one"></div>
+            <div class="two"></div>
+            <div class="three"></div>
+            <div class="four"></div>
+            <div class="five"></div>
+          </div>
+        </div>
+        <div class="shadow"></div>
+        </div>
+        
+    </div>
+    
+    <footer>
+        <button id="shareBtn"><i class="fa fa-share-alt" style="color:black"></i></button>
+    </footer>
+        <script>
+            $(document).ready(function () {
+                // Check if the device is a mobile device
+                function isMobile() {
+                    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                }
+    
+                // Use hover for desktop and click for mobile
+                if (isMobile()) {
+                    $('.container').on('click', function () {
+                        $('.card').stop().animate({
+                            top: '-90px'
+                        }, 'slow');
+                    });
+                } else {
+                    $('.container').hover(
+                        function () {
+                            $('.card').stop().animate({
+                                top: '-90px'
+                            }, 'slow');
+                        },
+                        function () {
+                            $('.card').stop().animate({
+                                top: 0
+                            }, 'slow');
+                        }
+                    );
+                }
+    
+                // Share on WhatsApp Status
+                $('#shareBtn').on('click', function () {
+                    var message = "Happy Valentine's Day! Spread the love ❤️";
+                    var url = window.location.href; // Replace with your desired link
+    
+                    // Construct the WhatsApp share URL
+                    var whatsappURL = "https://wa.me/?text=" + encodeURIComponent(message + "\n" + url);
+    
+                    // Open WhatsApp in a new window/tab
+                    window.open(whatsappURL, '_blank');
+                });
+            });
+        </script>
+</body>
+
+</html>
